@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <meta charset="utf-8" />
+    <title>BarberShop</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!--================ Navbar =================-->
+    <header class="header-area header-fixed">
+      <div class="container">
+        <div class="header-wrap">
+          <div
+            class="header-top d-flex justify-content-between align-items-center navbar-expand-lg"
+          >
+            <div class="col menu">
+              <a href="#" id="ApCBtn">Agendar Cita</a>
+            </div>
+            <div class="col-3 logo">
+              <a href="client.html"
+                ><img class="mx-auto" src="img/logo2.png" alt=""
+              /></a>
+            </div>
+            <nav class="col navbar navbar-expand-lg justify-content-end">
+              <div class="col menu">
+                <a href="" id="loBtn" style="margin-right: 50px;"
+                  >Cerrar Sesión</a
+                >
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--================ Citas =================-->
+    <section id="appoinmentsSection" style="margin-top: 200px;">
+      <h2 class="mb-20" style="text-align: center;">Citas agendadas</h2>
+      <div id="apCards">
+        <div class="loader" style="margin: 0 auto; margin-top: 150px;"></div>
+      </div>
+    </section>
+
+    <!--================ Seleccionar servicio =================-->
+    <section id="serviceSection" class="sections" style="display: none;">
+      <h2 class="mt-100 mb-50">Seleccione un servicio</h2>
+      <div style="margin-bottom: 20px;">
+        <div class="form-check mt-4">
+          <input
+            type="radio"
+            name="service"
+            id="se1"
+            value="Delineado de barba"
+            class="form-check-input"
+          />
+          <label for="se1" class="form-check-label label"
+            >Delineado de barba $150</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se2"
+            value="Tratamiento de cabello"
+            class="form-check-input"
+          />
+          <label for="se2" class="form-check-label label"
+            >Tratamiento de cabello $150</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se3"
+            value="Mascarilla negra"
+            class="form-check-input"
+          />
+          <label for="se3" class="form-check-label label"
+            >Mascarilla negra $150</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se4"
+            value="Exfoliación facial"
+            class="form-check-input"
+          />
+          <label for="se4" class="form-check-label label"
+            >Exfoliación facial $200</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se5"
+            value="Camuflaje de canas"
+            class="form-check-input"
+          />
+          <label for="se5" class="form-check-label label"
+            >Camuflaje de canas $150</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se6"
+            value="Corte de cabello y afeitado de barba"
+            class="form-check-input"
+          />
+          <label for="se6" class="form-check-label label"
+            >Corte de cabello y afeitado de barba $400</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se7"
+            value="Afeitado de barba"
+            class="form-check-input"
+          />
+          <label for="se7" class="form-check-label label"
+            >Afeitado de barba $200</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            name="service"
+            id="se8"
+            value="Corte de cabello"
+            class="form-check-input"
+          />
+          <label for="se8" class="form-check-label label"
+            >Corte de cabello $200</label
+          >
+        </div>
+      </div>
+      <button
+        type="button"
+        id="btnCancel"
+        class="btn btnClass"
+        style="margin-right: 20px;"
+      >
+        Cancelar
+      </button>
+      <button type="button" id="btnNextS" class="btn btnClass">
+        Siguiente
+      </button>
+    </section>
+
+    <!--================ Seleccionar barbero =================-->
+    <section id="barberSection" class="sections" style="display: none;">
+      <h2 class="mt-100 mb-100">Seleccione un barbero</h2>
+      <div style="margin-bottom: 20px;">
+        <div class="form-check mt-4">
+          <input type="radio" name="barber" id="b1" class="form-check-input" />
+          <label for="b1" class="form-check-label label"
+            >Daniel Mena Pérez</label
+          >
+        </div>
+        <div class="form-check">
+          <input type="radio" name="barber" id="b2" class="form-check-input" />
+          <label for="b2" class="form-check-label label"
+            >Lucía Martínez Herrera</label
+          >
+        </div>
+        <div class="form-check">
+          <input type="radio" name="barber" id="b3" class="form-check-input" />
+          <label for="b3" class="form-check-label label"
+            >Mario Blanco Narvaez</label
+          >
+        </div>
+      </div>
+      <button
+        type="button"
+        id="btnBackB"
+        class="btn btnClass"
+        style="width: 92.06px; margin-right: 20px;"
+      >
+        Atrás
+      </button>
+      <button type="button" id="btnNextB" class="btn btnClass">
+        Siguiente
+      </button>
+    </section>
+
+    <!--================ Seleccionar fecha y hora =================-->
+    <section id="datetimeSection" class="sections" style="display: none;">
+      <h2 for="datetime" class="mt-100 mb-100">
+        Seleccione la fecha y hora de la cita
+      </h2>
+      <div style="margin-bottom: 20px; font-size: 20px;">
+        <p>Horario disponible: 12:00 p.m. - 9:00 p.m.</p>
+        <p>*Sólo se pueden agendar citas con un mes de anticipación.*</p>
+        <div style="display: block;">
+          <input type="datetime-local" id="datetime" step="3600" />
+        </div>
+      </div>
+      <button
+        type="button"
+        id="btnBackD"
+        class="btn btnClass"
+        style="margin-right: 20px;"
+      >
+        Atrás
+      </button>
+      <button
+        type="button"
+        id="apBtn"
+        class="btn btnClass"
+        style="width: 63.59px;"
+      >
+        Listo
+      </button>
+    </section>
+
+    <!-- 		Scripts 		-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/client.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <meta charset="utf-8" />
+    <title>BarberShop</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!--================ Navbar =================-->
+    <header class="header-area header-fixed">
+      <div class="container">
+        <div class="header-wrap">
+          <div
+            class="header-top d-flex justify-content-between align-items-center navbar-expand-lg"
+          >
+            <div class="col menu">
+              <a></a>
+            </div>
+            <div class="col-3 logo">
+              <a href="worker.html"
+                ><img class="mx-auto" src="img/logo2.png" alt=""
+              /></a>
+            </div>
+            <nav class="col navbar navbar-expand-lg justify-content-end">
+              <div class="col menu">
+                <a href="" id="loBtn" style="margin-right: 50px;"
+                  >Cerrar Sesión</a
+                >
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--================ Citas =================-->
+    <section id="appoinmentsSection" style="margin-top: 200px;">
+      <h2 class="mb-20" style="text-align: center;">Citas agendadas</h2>
+      <div id="apCards">
+        <div class="loader" style="margin: 0 auto; margin-top: 150px;"></div>
+      </div>
+    </section>
+
+    <!-- 		Scripts 		-->
+    <script src="js/worker.js"></script>
+  </body>
+</html>

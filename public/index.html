@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <!-- Meta para móvil -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="UTF-8" />
+    <title>Vintage Barber Shop</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!--================ Iniciar sesión =================-->
+    <div class="modal fade" id="login">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#"
+                >Iniciar Sesión</a
+              >
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div id="sesion" class="tab-pane active">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="liEmail">
+                    Correo electrónico
+                  </label>
+                  <input
+                    type="text"
+                    name="inpEmail"
+                    id="liEmail"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="liPass">
+                    Contraseña
+                  </label>
+                  <input
+                    type="password"
+                    name="inpPassword"
+                    id="liPass"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="liBtn" class="btn btnClass">
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================ Registrarse =================-->
+    <div class="modal fade" id="signup">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#"
+                >Registrarse</a
+              >
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div id="registro" class="tab-pane active">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="name">
+                    Nombre completo
+                  </label>
+                  <input
+                    type="text"
+                    name="nam"
+                    class="form-control"
+                    id="name"
+                  />
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="sex"
+                      id="s1"
+                      value="masculino"
+                    />
+                    <label class="form-check-label" for="s1">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="sex"
+                      id="s2"
+                      value="femenino"
+                    />
+                    <label class="form-check-label" for="s2">
+                      Femenino
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="sex"
+                      id="s3"
+                      value="otro"
+                    />
+                    <label class="form-check-label" for="s3">
+                      Otro
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="age" for="age">Edad</label>
+                  <input
+                    type="number"
+                    name="age"
+                    id="age"
+                    class="form-control"
+                    min="12"
+                    max="150"
+                    onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13)
+								? null : event.charCode >= 48 && event.charCode <= 57"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="suEmail">Correo electrónico</label>
+                  <input
+                    type="text"
+                    name="inpEmail"
+                    id="suEmail"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="suPass">Contraseña</label>
+                  <input
+                    type="password"
+                    name="inpPassword"
+                    id="suPass"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="suBtn" class="btn btnClass">
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/index.js"></script>
+
+    <!--================ Navbar =================-->
+    <header class="header-area">
+      <div class="container">
+        <div class="header-wrap">
+          <div
+            class="header-top d-flex justify-content-between align-items-center navbar-expand-lg"
+          >
+            <div class="col menu" style="padding-right: 0px;">
+              <a href="#inicio" style="margin-right: 70px;">Inicio</a>
+              <a href="#nosotros" style="margin-right: 70px;">Nosotros</a>
+              <a href="#servicios">Servicios</a>
+            </div>
+            <div
+              class="col-3 logo"
+              style="margin-left: 0px; margin-right: 0px;"
+            >
+              <a href=""><img class="mx-auto" src="img/logo2.png" alt="" /></a>
+            </div>
+            <nav class="navbar navbar-expand-lg justify-content-end">
+              <div class="menu" style="padding-left: 20px;">
+                <a href="#barberos" style="margin-right: 40px;">Barberos</a>
+                <a
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#login"
+                  style="margin-right: 40px;"
+                  >Iniciar Sesión</a
+                >
+                <a href="#" data-toggle="modal" data-target="#signup"
+                  >Registrarse</a
+                >
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--================ Banner =================-->
+    <section id="inicio" class="home-banner-area relative">
+      <div class="owl-carousel home-banner-owl">
+        <div class="banner-img">
+          <img class="img-fluid" src="img/carousel/b1.jpg" alt="" />
+          <div class="overlay overlay-bg"></div>
+        </div>
+        <div class="banner-img">
+          <img class="img-fluid" src="img/carousel/b2.jpg" alt="" />
+          <div class="overlay overlay-bg"></div>
+        </div>
+        <div class="banner-img">
+          <img class="img-fluid" src="img/carousel/b3.jpg" alt="" />
+          <div class="overlay overlay-bg"></div>
+        </div>
+      </div>
+      <div class="text-wrapper">
+        <h1>
+          Venga a Vintage Barber Shop <br />
+          y cambie su estilo.
+        </h1>
+        <p>
+          Contamos con los mejores servicios y barberos para darle los
+          resultados que espera.
+        </p>
+      </div>
+    </section>
+
+    <!--================ Nosotros =================-->
+    <section id="nosotros" class="section-gap-top about-area">
+      <div class="container">
+        <div class="single-about row align-items-center">
+          <div class="col-lg-4 col-md-6 no-padding about-left">
+            <div class="about-content">
+              <h1>Nosotros<br /></h1>
+              <p>
+                Somos un barbería enfocada en su bienestar,<br />
+                ofreciendole los mejores servicios al mejor precio<br />
+                y un trato de primera.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-6 text-center no-padding about-right">
+            <div class="about-thumb">
+              <img src="img/about-img.jpg" class="img-fluid info-img" alt="" />
+            </div>
+          </div>
+          <div class="bordered-img">
+            <img src="img/about-img2.jpg" class="img-fluid info-img" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--================ Servicios =================-->
+    <section id="servicios" class="service-area section-gap-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <div class="section-title">
+              <h1>Servicios</h1>
+              <p>
+                Tenemos toda variedad de servicios para los cuales usamos los
+                mejores productos.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 col-md-3">
+            <div class="single-service">
+              <img class="img-fluid" src="img/services/service1.jpg" alt="" />
+              <h4>Corte de cabello</h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-md-3">
+            <div class="single-service">
+              <img class="img-fluid" src="img/services/service2.jpg" alt="" />
+              <h4>Afeitado de barba</h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-md-3">
+            <div class="single-service">
+              <img class="img-fluid" src="img/services/service3.jpg" alt="" />
+              <h4>Delineado de barba</h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-md-3">
+            <div class="single-service">
+              <img class="img-fluid" src="img/services/service4.jpg" alt="" />
+              <h4>Tratamiento de cabello</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--================ Barberos =================-->
+    <section id="barberos" class="team-area section-gap-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <div class="section-title">
+              <h1>Barberos</h1>
+              <p>Atiendase con personas capacitadas y llenas de experiencia</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- miembro individual -->
+          <div class="col-lg-4 col-md-4">
+            <div class="single-team-member">
+              <div class="member-img" style="height: 300px;">
+                <img class="img-fluid" src="img/team/person1.jpg" alt="" />
+              </div>
+
+              <div class="proff">
+                <h4>Daniel Mena Pérez</h4>
+                <p>Especialista en corte de cabello</p>
+              </div>
+            </div>
+          </div>
+          <!-- miembro individual -->
+          <div class="col-lg-4 col-md-4">
+            <div class="single-team-member">
+              <div class="member-img" style="height: 300px;">
+                <img class="img-fluid" src="img/team/person2.jpg" alt="" />
+              </div>
+              <div class="proff">
+                <h4>Lucía Martínez Herrera</h4>
+                <p>Profesional en tratamiento de cabello</p>
+              </div>
+            </div>
+          </div>
+          <!-- miembro individual -->
+          <div class="col-lg-4 col-md-4">
+            <div class="single-team-member">
+              <div class="member-img" style="height: 300px;">
+                <img class="img-fluid" src="img/team/person3.jpg" alt="" />
+              </div>
+              <div class="proff">
+                <h4>Mario Blanco Narvaez</h4>
+                <p>Experto en afeitado de barba</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--================ Footer =================-->
+    <footer
+      class="footer-area section-gap mt-40"
+      style="padding: 70px 0;"
+    ></footer>
+
+    <!-- 		Scripts 		-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>
